@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = new mongoose.Schema({
+const postSchema = mongoose.Schema({
   text: {
     type: String,
     required: 'Text is required',
