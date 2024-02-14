@@ -92,8 +92,8 @@ export const updateUserProfile = asyncHandler(async (request, response) => {
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
-      about: updateUser.about,
-      photo: updateUser.photo,
+      about: updatedUser.about,
+      photo: updatedUser.photo,
     });
   } else {
     response.status(404);
