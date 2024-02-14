@@ -1,17 +1,5 @@
 import mongoose from 'mongoose';
 
-// Like schema.
-const likeSchema = mongoose.Schema(
-  {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'User',
-  },
-  {
-    timestamps: true,
-  }
-);
-
 // Comment schema.
 const commentSchema = mongoose.Schema(
   {
@@ -19,6 +7,7 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: 'Text is required',
     },
+    likes: [likeSchema],
     postedBy: { type: mongoose.Schema.ObjectId, required: true, ref: 'User' },
   },
   {
@@ -37,7 +26,13 @@ const postSchema = mongoose.Schema(
       type: String,
       default: '',
     },
-    likes: [likeSchema],
+    likes: [
+      {
+        type: mongoose.Schema.ObjectId,
+        required: true,
+        ref: 'User',
+      },
+    ],
     comments: [commentSchema],
     postedBy: { type: mongoose.Schema.ObjectId, required: true, ref: 'User' },
   },

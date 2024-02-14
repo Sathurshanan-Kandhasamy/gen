@@ -1,30 +1,6 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
-// Following schema.
-const followingSchema = mongoose.Schema(
-  {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'User',
-  },
-  {
-    timestamps: true,
-  }
-);
-
-// Follower schema.
-const followerSchema = mongoose.Schema(
-  {
-    type: mongoose.Schema.ObjectId,
-    required: true,
-    ref: 'User',
-  },
-  {
-    timestamps: true,
-  }
-);
-
 // User schema.
 const userSchema = mongoose.Schema(
   {
@@ -52,8 +28,20 @@ const userSchema = mongoose.Schema(
       type: String,
       default: '',
     },
-    following: [followingSchema],
-    followers: [followerSchema],
+    following: [
+      {
+        type: mongoose.Schema.ObjectId,
+        required: true,
+        ref: 'User',
+      },
+    ],
+    followers: [
+      {
+        type: mongoose.Schema.ObjectId,
+        required: true,
+        ref: 'User',
+      },
+    ],
   },
   {
     timestamps: true,
