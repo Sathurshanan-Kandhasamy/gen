@@ -19,7 +19,7 @@ export const loginUser = asyncHandler(async (request, response) => {
 });
 
 // Description:  Register user.
-// Route:        POST /api/users
+// Route:        POST /api/users/register
 // Access:       Public
 export const registerUser = asyncHandler(async (request, response) => {
   const { name, email, password } = request.body;
@@ -61,7 +61,7 @@ export const logoutUser = asyncHandler(async (request, response) => {
   response.status(200).json({ message: 'Logged out successfully.' });
 });
 
-// Description:  Get an user profile.
+// Description:  Get user profile.
 // Route:        POST /api/users/profile
 // Access:       Private
 export const getUserProfile = asyncHandler(async (request, response) => {
@@ -74,7 +74,7 @@ export const getUserProfile = asyncHandler(async (request, response) => {
   }
 });
 
-// Description:  Update an user profile.
+// Description:  Update user profile.
 // Route:        PUT /api/users/profile
 // Access:       Private
 export const updateUserProfile = asyncHandler(async (request, response) => {
@@ -101,6 +101,21 @@ export const updateUserProfile = asyncHandler(async (request, response) => {
   }
 });
 
+// Description:  Delete user profile.
+// Route:        DELETE /api/users/profile
+// Access:       Private
+export const deleteUserProfile = asyncHandler(async (request, response) => {
+  const user = await User.findById(request.user._id);
+  if (user) {
+    await User.deleteOne({ _id: user._id });
+    await Post.deleteMany({ _id: user._id });
+    await response.status(200).json({ message: 'User deleted successfully.' });
+  } else {
+    response.status(404);
+    throw new Error('User not found');
+  }
+});
+
 // Description:  Get an user by id.
 // Route:        GET /api/users/:id
 // Access:       Private
@@ -114,10 +129,9 @@ export const getUserById = asyncHandler(async (request, response) => {
   }
 });
 
-// Description:  Follow and unfollow an user.
-// Route:        DELETE /api/users/:id
+// Description:  Follow or unfollow an user.
+// Route:        PUT /api/users/:id
 // Access:       Private
-
 export const followUnfollowUser = asyncHandler(async (request, response) => {
   const user = await User.findById(request.user._id);
   const followUser = await User.findById(request.params.id);
@@ -136,21 +150,6 @@ export const followUnfollowUser = asyncHandler(async (request, response) => {
     await followUser.save();
 
     response.status(200).json(user);
-  } else {
-    response.status(404);
-    throw new Error('User not found');
-  }
-});
-
-// Description:  Delete an user.
-// Route:        DELETE /api/users/:id
-// Access:       Private
-export const deleteUser = asyncHandler(async (request, response) => {
-  const user = await User.findById(request.user._id);
-  if (user) {
-    await User.deleteOne({ _id: user._id });
-    await Post.deleteMany({ _id: user._id });
-    await response.status(200).json({ message: 'User deleted successfully.' });
   } else {
     response.status(404);
     throw new Error('User not found');
