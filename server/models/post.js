@@ -7,8 +7,11 @@ const commentSchema = mongoose.Schema(
       type: String,
       required: 'Text is required',
     },
-    likes: [likeSchema],
-    postedBy: { type: mongoose.Schema.ObjectId, required: true, ref: 'User' },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
@@ -28,13 +31,17 @@ const postSchema = mongoose.Schema(
     },
     likes: [
       {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User',
       },
     ],
     comments: [commentSchema],
-    postedBy: { type: mongoose.Schema.ObjectId, required: true, ref: 'User' },
+    postedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
   },
   {
     timestamps: true,
