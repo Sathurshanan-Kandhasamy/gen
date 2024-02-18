@@ -1,7 +1,7 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Post from '../models/post.js';
 
-// Description:  Gets all the posts.
+// Description:  Get all the posts.
 // Route:        GET /api/posts
 // Access:       Public
 export const getPosts = asyncHandler(async (request, response) => {
@@ -9,7 +9,7 @@ export const getPosts = asyncHandler(async (request, response) => {
   response.status(200).json(posts);
 });
 
-// Description:  Gets a post by id.
+// Description:  Get a post by id.
 // Route:        GET /api/posts/:id
 // Access:       Public
 export const getPostById = asyncHandler(async (request, response) => {
