@@ -25,7 +25,7 @@ const postSchema = mongoose.Schema(
       type: String,
       required: 'Text is required',
     },
-    photo: {
+    image: {
       type: String,
       default: '',
     },

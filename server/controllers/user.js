@@ -86,14 +86,14 @@ export const updateUserProfile = asyncHandler(async (request, response) => {
       user.password = request.body.password;
     }
     user.about = req.body.about || user.about;
-    user.photo = req.body.photo || user.photo;
+    user.image = req.body.image || user.image;
     const updatedUser = await user.save();
     response.status(200).json({
       _id: updatedUser._id,
       name: updatedUser.name,
       email: updatedUser.email,
       about: updatedUser.about,
-      photo: updatedUser.photo,
+      image: updatedUser.image,
     });
   } else {
     response.status(404);

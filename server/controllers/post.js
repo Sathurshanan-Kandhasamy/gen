@@ -26,10 +26,10 @@ export const getPostById = asyncHandler(async (request, response) => {
 // Route:        POST /api/posts
 // Access:       Private
 export const createPost = asyncHandler(async (request, response) => {
-  const { text, photo } = request.body;
+  const { text, image } = request.body;
   const post = new Post({
     text,
-    photo,
+    image,
     postedBy: request.user._id,
   });
   const createdPost = await post.save();
@@ -40,11 +40,11 @@ export const createPost = asyncHandler(async (request, response) => {
 // Route:        PUT /api/post/:id
 // Access:       Private
 export const updatePost = asyncHandler(async (request, response) => {
-  const { text, photo } = request.body;
+  const { text, image } = request.body;
   const post = await Post.findById(request.params.id);
   if (post) {
     post.text = text;
-    post.photo = photo;
+    post.image = image;
 
     const updatedPost = await post.save();
     response.status(200).json(updatedPost);

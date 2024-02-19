@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
-    photo: {
+    image: {
       type: String,
       default: '',
     },
