@@ -25,7 +25,7 @@ export const getPostById = asyncHandler(async (request, response) => {
 // Description:  Create a post.
 // Route:        POST /api/posts
 // Access:       Private
-export const createProduct = asyncHandler(async (request, response) => {
+export const createPost = asyncHandler(async (request, response) => {
   const { text, photo } = request.body;
   const post = new Post({
     text,
@@ -57,7 +57,7 @@ export const updatePost = asyncHandler(async (request, response) => {
 // Description:  Delete a post.
 // Route:        DELETE /api/post/:id
 // Access:       Private
-export const deleteProduct = asyncHandler(async (request, response) => {
+export const deletePost = asyncHandler(async (request, response) => {
   const post = await Post.findById(request.params.id);
   if (post) {
     await Post.deleteOne({ _id: post._id });
