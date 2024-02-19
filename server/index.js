@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/error.js';
 import userRoutes from './routes/user.js';
 import postRoutes from './routes/post.js';
+import uploadRoute from './routes/upload.js';
 const port = process.env.PORT;
 
 const app = express();
@@ -18,8 +19,9 @@ app.get('/', (request, response) => {
   response.send('API is running.');
 });
 
-app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/upload', uploadRoute);
 
 app.use(notFound);
 app.use(errorHandler);
