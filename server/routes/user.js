@@ -8,7 +8,7 @@ import {
   updateUserProfile,
   deleteUserProfile,
   getUserById,
-  followUnfollowUser,
+  createUserFollower,
 } from '../controllers/user.js';
 import protect from '../middleware/authentication.js';
 import checkObjectId from '../middleware/checkObjectId.js';
@@ -32,7 +32,7 @@ router
 //  Get an user by id.
 router.get('/:id', protect, checkObjectId, getUserById);
 
-// Follow or unfollow an user.
-router.put(':/id/follow-unfollow', protect, checkObjectId, followUnfollowUser);
+// Create an user follower.
+router.put(':/id/followers', protect, checkObjectId, createUserFollower);
 
 export default router;

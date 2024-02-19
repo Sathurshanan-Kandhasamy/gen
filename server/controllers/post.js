@@ -68,10 +68,10 @@ export const deletePost = asyncHandler(async (request, response) => {
   }
 });
 
-// Description:  Create a comment.
-// Route:        POST /api/post/:id/comment
+// Description:  Create a post comment.
+// Route:        POST /api/post/:id/comments
 // Access:       Private
-export const createComment = asyncHandler(async (request, response) => {
+export const createPostComment = asyncHandler(async (request, response) => {
   const post = await Post.findById(request.params.id);
   if (post) {
     const comment = {
@@ -87,10 +87,10 @@ export const createComment = asyncHandler(async (request, response) => {
   }
 });
 
-// Description:  Create or remove a like.
-// Route:        POST /api/post/:id/like
+// Description:  Create a post like.
+// Route:        POST /api/post/:id/likes
 // Access:       Private
-export const createLike = asyncHandler(async (request, response) => {
+export const createPostLike = asyncHandler(async (request, response) => {
   const post = await Post.findById(request.params.id);
   if (post) {
     const alreadyLiked = post.likes.find(

@@ -129,10 +129,10 @@ export const getUserById = asyncHandler(async (request, response) => {
   }
 });
 
-// Description:  Follow or unfollow an user.
-// Route:        PUT /api/users/:id
+// Description:  Create an user follower.
+// Route:        PUT /api/users/:id/followers
 // Access:       Private
-export const followUnfollowUser = asyncHandler(async (request, response) => {
+export const createUserFollower = asyncHandler(async (request, response) => {
   const user = await User.findById(request.user._id);
   const followUser = await User.findById(request.params.id);
 
