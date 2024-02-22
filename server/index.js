@@ -2,11 +2,14 @@ import express from 'express';
 import 'dotenv/config';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
+import connectToDatabase from './configuration/database.js';
 import { notFound, errorHandler } from './middleware/error.js';
 import userRoutes from './routes/user.js';
 import postRoutes from './routes/post.js';
 import uploadRoute from './routes/upload.js';
 const port = process.env.PORT;
+
+connectToDatabase();
 
 const app = express();
 
