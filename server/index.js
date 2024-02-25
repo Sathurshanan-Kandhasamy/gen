@@ -1,3 +1,4 @@
+import path from 'path';
 import express from 'express';
 import 'dotenv/config';
 import helmet from 'helmet';
@@ -25,6 +26,9 @@ app.get('/', (request, response) => {
 app.use('/api/posts', postRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoute);
+
+const __dirname = path.resolve();
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(notFound);
 app.use(errorHandler);
