@@ -5,30 +5,31 @@ import {
   Flex,
   Button,
   HStack,
-  Link,
   Avatar,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
   MenuDivider,
+  Link as ChakraLink,
 } from '@chakra-ui/react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <Card borderRadius="none">
       <Container maxW="container.xl" p="2">
         <Flex justifyContent="space-between" alignItems="center">
-          {true ? (
+          {false ? (
             <>
-              <Link to="/">
+              <ChakraLink as={ReactRouterLink} to="/">
                 <Heading as="h2" size="lg">
                   GEN
                 </Heading>
-              </Link>
+              </ChakraLink>
               <HStack spacing="15px">
                 <Button
-                  as={Link}
+                  as={ReactRouterLink}
                   to="/new"
                   colorScheme="gray"
                   variant="outline"
@@ -40,24 +41,24 @@ const Navbar = () => {
                     <Avatar size="sm" name="John Doe" src="" />
                   </MenuButton>
                   <MenuList>
-                    <MenuItem as={Link} to="/john">
+                    <MenuItem as={ReactRouterLink} to="/john">
                       John-Doe <br /> @john{' '}
                     </MenuItem>
                     <MenuDivider />
-                    <MenuItem as={Link} to="/dashboard">
+                    <MenuItem as={ReactRouterLink} to="/dashboard">
                       Dashboard
                     </MenuItem>
-                    <MenuItem as={Link} to="/new">
+                    <MenuItem as={ReactRouterLink} to="/new">
                       Create Post
                     </MenuItem>
-                    <MenuItem as={Link} to="/readinglist">
+                    <MenuItem as={ReactRouterLink} to="/readinglist">
                       Reading List
                     </MenuItem>
-                    <MenuItem as={Link} to="/settings">
+                    <MenuItem as={ReactRouterLink} to="/settings">
                       Settings
                     </MenuItem>
                     <MenuDivider />
-                    <MenuItem as={Link} to="/logout_confirm">
+                    <MenuItem as={ReactRouterLink} to="/logout_confirm">
                       Log Out
                     </MenuItem>
                   </MenuList>
@@ -66,14 +67,14 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Link href="/">
+              <ChakraLink as={ReactRouterLink} to="/">
                 <Heading as="h2" size="lg">
                   GEN
                 </Heading>
-              </Link>
+              </ChakraLink>
               <HStack>
                 <Button
-                  as={Link}
+                  as={ReactRouterLink}
                   to="/login"
                   colorScheme="gray"
                   variant="ghost"
@@ -81,7 +82,7 @@ const Navbar = () => {
                   Log in
                 </Button>
                 <Button
-                  as={Link}
+                  as={ReactRouterLink}
                   to="/register"
                   colorScheme="gray"
                   variant="outline"
