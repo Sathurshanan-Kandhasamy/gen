@@ -18,7 +18,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <Card borderRadius="none">
-      <Container maxW="container.xl" p="2">
+      <Container maxWidth="container.xl" padding="2">
         <Flex justifyContent="space-between" alignItems="center">
           {false ? (
             <>
@@ -27,7 +27,7 @@ const Navbar = () => {
                   GEN
                 </Heading>
               </ChakraLink>
-              <HStack spacing="15px">
+              <HStack spacing="15">
                 <Button
                   as={ReactRouterLink}
                   to="/new"
@@ -75,7 +75,7 @@ const Navbar = () => {
               <HStack>
                 <Button
                   as={ReactRouterLink}
-                  to="/login"
+                  to="/enter"
                   colorScheme="gray"
                   variant="ghost"
                 >
@@ -83,7 +83,7 @@ const Navbar = () => {
                 </Button>
                 <Button
                   as={ReactRouterLink}
-                  to="/register"
+                  to="/sign_up"
                   colorScheme="gray"
                   variant="outline"
                 >

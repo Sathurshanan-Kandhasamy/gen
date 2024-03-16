@@ -18,7 +18,7 @@ import { Link as ReactRouterLink } from 'react-router-dom';
 
 const Login = () => {
   return (
-    <Card mt={20} boxShadow="none">
+    <Card marginTop="24px" boxShadow="none">
       <CardHeader>
         <Center>
           <Heading size="lg">Join the GEN Community</Heading>
@@ -26,7 +26,7 @@ const Login = () => {
       </CardHeader>
       <CardBody>
         <form>
-          <VStack spacing={5}>
+          <VStack spacing="5">
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input type="email" />
@@ -46,7 +46,7 @@ const Login = () => {
         <Center width="100%">
           <Text>
             New to GEN Community?{' '}
-            <ChakraLink as={ReactRouterLink} to="/register" color="blue">
+            <ChakraLink as={ReactRouterLink} to="/sign_up" color="blue">
               Create account.
             </ChakraLink>
           </Text>

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './assets/styles/index.css';
 import App from './App';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import { ChakraProvider } from '@chakra-ui/react';
 import reportWebVitals from './reportWebVitals';
 
@@ -13,8 +14,12 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: 'login',
+        path: 'enter',
         element: <Login />,
+      },
+      {
+        path: 'sign_up',
+        element: <Register />,
       },
     ],
   },
